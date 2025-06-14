@@ -50,7 +50,7 @@ public class Bomb : MonoBehaviour
     void ExplodeAt(Vector3 pos)
     {
         GameObject explosion = Instantiate(explosionPrefab, pos, Quaternion.identity);
-        Destroy(explosion, 0.7f); 
+        Destroy(explosion, 0.8f); 
     }
 
     bool CheckObstacle(Vector3 pos)

@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4256a052e960b0743aeef9560a33ec0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 4059875189503447499, guid: f1c6a13da823feb479fdca7e44edc78c, type: 3}
+  explosionPrefab: {fileID: 697063391489662732, guid: 915fffab5312c9042a835df282e2793b, type: 3}
   explodeDelay: 2
   explosionRange: 1
   cellSize: 2

@@ -33,7 +33,8 @@ public class GridManager : MonoBehaviour
     {
         Vector3Int cellPos = _tilemap.WorldToCell(postion);
         Vector3 spawnPos = _tilemap.GetCellCenterWorld(cellPos);
-        spawnPos.y = _tilemap.transform.position.y;
+        // spawnPos.y = _tilemap.transform.position.y;
+        spawnPos.y = 2.5f;
         return spawnPos;
     }
 }
