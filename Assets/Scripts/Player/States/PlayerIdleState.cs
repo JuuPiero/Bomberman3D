@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 public class PlayerIdleState: PlayerState
 {
     public PlayerIdleState(Player player, string animationBoolName = "") : base(player, animationBoolName)
@@ -7,6 +9,6 @@ public class PlayerIdleState: PlayerState
 
     public override bool IsMatchingConditions()
     {
-        return _player.Horizontal == 0f;
+        return _player.InputDirection == Vector3.zero;
     }
 }
