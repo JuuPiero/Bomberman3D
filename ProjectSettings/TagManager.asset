@@ -11,6 +11,8 @@ TagManager:
   - Wall
   - Breakable
   - Unbreakable
+  - Bomb
+  - Enemy
   layers:
   - Default
   - TransparentFX

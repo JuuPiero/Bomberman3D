@@ -1,7 +1,6 @@
 using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.UIElements;
+
 
 [CustomPropertyDrawer(typeof(Rule))]
 public class RuleEditor : PropertyDrawer

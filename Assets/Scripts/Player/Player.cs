@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
 
     public Vector3 InputDirection { get; private set; }
     public float speed = 3f;
+    public int maxBomb = 1;
+    public int explosionRange = 1;
 
 
     void Awake()

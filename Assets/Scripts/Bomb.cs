@@ -83,6 +83,13 @@ public class Bomb : MonoBehaviour
                     // Destroy(obj);
                     return true;
                 }
+
+                if (obj.CompareTag("Enemy"))
+                {
+                    Debug.Log("Enemy");
+                    Destroy(obj);
+                    return true;
+                }
                 current = current.parent;
             }
         }
