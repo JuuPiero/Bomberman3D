@@ -14,15 +14,11 @@ public class GridManager : MonoBehaviour
         _grid = GetComponent<Grid>();
     }
 
-    // public Vector3 GetSize()
-    // {
-    //     return _grid.GetBoundsLocal().size;
-    // }
+    public Vector3 GetCellSize()
+    {
+        return _grid.cellSize;
+    }
 
-    // public Vector3 GetPosition()
-    // {
-    //     return _tilemap.transform.position;
-    // }
 
     public Vector3Int GetPositionOfObjectInGrid(Vector3 postion)
     {

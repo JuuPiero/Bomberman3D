@@ -1,22 +1,24 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
 
 public class Balloon : MonoBehaviour
 {
+    public Rigidbody RB { get; private set; }
     public float moveSpeed = 2f;
-    public float gridSize = 2f; // kích thước 1 ô
-     private Vector3 currentDirection;
-    private Vector3 targetPosition;
-    private bool isMoving = false;
+    public float gridSize = 2f; 
+    [SerializeField] private Vector3 currentDirection;
 
-    private readonly Vector3[] directions = new Vector3[]
+    private readonly Vector3[] _directions = new Vector3[]
     {
         Vector3.forward,
         Vector3.back,
         Vector3.left,
         Vector3.right
     };
+    void Awake()
+    {
+        RB = GetComponent<Rigidbody>();
+    }
 
     void Start()
     {
@@ -24,42 +26,12 @@ public class Balloon : MonoBehaviour
         ChooseNewDirection();
     }
 
-    void Update()
+   
+    void FixedUpdate()
     {
-        if (isMoving)
+        if (currentDirection != Vector3.zero)
         {
-            MoveToTarget();
-        }
-        else
-        {
-            TryMove();
-        }
-    }
-
-    void TryMove()
-    {
-        Vector3 nextPos = transform.position + currentDirection * gridSize;
-
-        if (IsWalkable(nextPos))
-        {
-            targetPosition = nextPos;
-            isMoving = true;
-            RotateTo(currentDirection);
-        }
-        else
-        {
-            ChooseNewDirection();
-        }
-    }
-
-    void MoveToTarget()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-
-        if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
-        {
-            transform.position = targetPosition;
-            isMoving = false;
+            RB.linearVelocity = new Vector3(moveSpeed * currentDirection.x, 0f, moveSpeed * currentDirection.z);
         }
     }
 
@@ -67,9 +39,9 @@ public class Balloon : MonoBehaviour
     {
         List<Vector3> validDirs = new List<Vector3>();
 
-        foreach (Vector3 dir in directions)
+        foreach (Vector3 dir in _directions)
         {
-            Vector3 checkPos = transform.position + dir * gridSize;
+            Vector3 checkPos = transform.position + dir * GridManager.Instance.GetCellSize().x;
             if (IsWalkable(checkPos))
                 validDirs.Add(dir);
         }
@@ -86,7 +58,7 @@ public class Balloon : MonoBehaviour
 
     bool IsWalkable(Vector3 pos)
     {
-        Collider[] hits = Physics.OverlapSphere(pos, 0.05f);
+        Collider[] hits = Physics.OverlapSphere(pos , 0.5f);
         foreach (var hit in hits)
         {
             Transform current = hit.transform;
@@ -118,12 +90,27 @@ public class Balloon : MonoBehaviour
         }
     }
 
+    void OnDrawGizmos()
+    {
+        foreach (var dir in _directions)
+        {
+            Gizmos.DrawSphere(transform.position + dir * gridSize, 0.5f);
+        }
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other != null)
+        {
+            SnapToGrid();
+            ChooseNewDirection();
+            RotateTo(currentDirection);
+        }
+    }
+
     void SnapToGrid()
     {
         // chỉnh vị trí về đúng ô để tránh lệch lưới
-        Vector3 pos = transform.position;
-        pos.x = Mathf.Round(pos.x / gridSize) * gridSize;
-        pos.z = Mathf.Round(pos.z / gridSize) * gridSize;
-        transform.position = pos;
+        transform.position = GridManager.Instance.GetPostionCellCenter(transform.position);
     }
 }

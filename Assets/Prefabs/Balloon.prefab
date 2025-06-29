@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7286114619158320307}
   - component: {fileID: 3268184970399583225}
   - component: {fileID: 3654282529832458160}
-  m_Layer: 0
+  - component: {fileID: 6165428025838126350}
+  m_Layer: 8
   m_Name: Balloon
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -46,8 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad92902ce5a75f6468383c8651e46646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wallCheck: {fileID: 0}
   moveSpeed: 2
   gridSize: 2
+  currentDirection: {x: 0, y: 0, z: 0}
 --- !u!135 &3654282529832458160
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -68,7 +71,34 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.73
-  m_Center: {x: 0, y: 1.6, z: -0.14}
+  m_Center: {x: 0, y: 1.1, z: 0}
+--- !u!54 &6165428025838126350
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3229153797266751857}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1001 &3726159874884221579
 PrefabInstance:
   m_ObjectHideFlags: 0
