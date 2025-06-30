@@ -10,12 +10,12 @@ public class Player : MonoBehaviour
     [field: SerializeField] public Rigidbody RB { get; private set; }
     [field: SerializeField] public StateMachine StateMachine { get; private set; }
 
-    private TilemapDetector _detector;
 
     public Vector3 InputDirection { get; private set; }
     public float speed = 3f;
     public int maxBomb = 1;
     public int explosionRange = 1;
+    public bool isDead = false;
 
 
     void Awake()
@@ -23,15 +23,15 @@ public class Player : MonoBehaviour
         Anim = GetComponentInChildren<Animator>();
         RB = GetComponent<Rigidbody>();
         StateMachine = new StateMachine();
-
-        _detector = GetComponentInChildren<TilemapDetector>();
     }
 
     void Start()
     {
         StateMachine.AddState(new PlayerIdleState(this, "Idle"));
         StateMachine.AddState(new PlayerWalkState(this, "Walk"));
-        StateMachine.Initialize();
+        StateMachine.AddState(new PlayerDieState(this, "Die"));
+
+        StateMachine.Initialize(StateMachine.GetState<PlayerIdleState>());
     }
 
     void Update()
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         InputDirection = new Vector3(horizontal, 0f, vertical);
 
-        if (InputDirection.sqrMagnitude > 0.01f)
+        if (InputDirection.sqrMagnitude > 0.01f && !isDead)
         {
             // Lấy góc quay từ hướng di chuyển
             Quaternion targetRotation = Quaternion.LookRotation(InputDirection);
@@ -50,9 +50,6 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            // var pos = GridManager.Instance.GetPostionCellCenter(transform.position);
-            // print(pos);
-            // _detector.DetectTileAndBomb(transform.position);
             PlaceBomb();
         }
 
@@ -69,8 +66,14 @@ public class Player : MonoBehaviour
     void PlaceBomb()
     {
         Vector3 placePos = GridManager.Instance.GetPostionCellCenter(transform.position);
-        Instantiate(bombPrefab, placePos, Quaternion.identity);
+        GameObject bombGO = Instantiate(bombPrefab, placePos, Quaternion.identity);
+        Bomb bomb = bombGO.GetComponent<Bomb>();
+        bomb.explosionRange = explosionRange;
     }
-
-    
+    public void Die()
+    {
+        isDead = true;
+        speed = 0f;
+        //GAME OVER
+    }
 }

@@ -61,21 +61,14 @@ public class Balloon : MonoBehaviour
         Collider[] hits = Physics.OverlapSphere(pos , 0.5f);
         foreach (var hit in hits)
         {
-            Transform current = hit.transform;
-            while (current != null)
+            if (hit.gameObject.layer == LayerMask.NameToLayer("Wall") || hit.gameObject.layer == LayerMask.NameToLayer("Breakable"))
             {
-                GameObject obj = current.gameObject;
-                if (obj.layer == LayerMask.NameToLayer("Wall") || obj.layer == LayerMask.NameToLayer("Breakable"))
-                {
-                    return false;
-                }
+                return false;
+            }
 
-                if (obj.CompareTag("Bomb"))
-                {
-                    return false;
-                }
-
-                current = current.parent;
+            if (hit.CompareTag("Bomb"))
+            {
+                return false;
             }
         }
         return true;
@@ -94,18 +87,28 @@ public class Balloon : MonoBehaviour
     {
         foreach (var dir in _directions)
         {
-            Gizmos.DrawSphere(transform.position + dir * gridSize, 0.5f);
+            Gizmos.DrawWireSphere(transform.position + dir * gridSize, 0.5f);
         }
     }
 
     void OnCollisionEnter(Collision other)
     {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Player player = other.gameObject.GetComponent<Player>();
+            player.Die();
+            ChooseNewDirection();
+            return;
+        }
+        
+
         if (other != null)
         {
             SnapToGrid();
             ChooseNewDirection();
             RotateTo(currentDirection);
         }
+
     }
 
     void SnapToGrid()

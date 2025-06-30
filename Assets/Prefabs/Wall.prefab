@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2563509101481379035}
   - component: {fileID: 2749607235433874334}
+  - component: {fileID: 4421195504283288302}
   m_Layer: 6
   m_Name: Wall
   m_TagString: Rule Tile
@@ -49,6 +50,27 @@ MonoBehaviour:
   ruleTileController: {fileID: 0}
   placeholder: {fileID: 5982306330470423758}
   neighborTilePositions: 0000000000000000
+--- !u!65 &4421195504283288302
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5426331115295193775}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &5982306330470423758
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +175,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: 0}

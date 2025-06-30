@@ -4,7 +4,6 @@ using System.Linq;
 using UnityEngine;
 
 
-[Serializable]
 public class StateMachine {
 
     public event Action OnStateChange;
