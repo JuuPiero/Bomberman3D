@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 public class Bomb : MonoBehaviour
@@ -7,6 +8,8 @@ public class Bomb : MonoBehaviour
     public int explosionRange = 1;
     public float cellSize = 2f;
     private Collider _collider;
+
+    public event Action OnExploded;
 
     private Vector3[] _directions = new Vector3[]
     {
@@ -28,7 +31,7 @@ public class Bomb : MonoBehaviour
     IEnumerator Explode()
     {
         yield return new WaitForSeconds(explodeDelay);
-
+        OnExploded?.Invoke();
         ExplodeAt(transform.position);
 
         foreach (var dir in _directions)

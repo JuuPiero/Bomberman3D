@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public Vector3 InputDirection { get; private set; }
     public float speed = 3f;
     public int maxBomb = 1;
+    private int _currentBombCount = 0;
     public int explosionRange = 1;
     public bool isDead = false;
 
@@ -65,10 +66,15 @@ public class Player : MonoBehaviour
 
     void PlaceBomb()
     {
+        if (_currentBombCount >= maxBomb) return;
         Vector3 placePos = GridManager.Instance.GetPostionCellCenter(transform.position);
         GameObject bombGO = Instantiate(bombPrefab, placePos, Quaternion.identity);
         Bomb bomb = bombGO.GetComponent<Bomb>();
         bomb.explosionRange = explosionRange;
+        _currentBombCount++;
+
+        bomb.OnExploded += () => _currentBombCount--;
+
     }
     public void Die()
     {
