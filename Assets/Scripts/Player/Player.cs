@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public int explosionRange = 1;
     public bool isDead = false;
 
+    public float explodeDelay = 2f;
+
 
     void Awake()
     {
@@ -71,6 +73,7 @@ public class Player : MonoBehaviour
         GameObject bombGO = Instantiate(bombPrefab, placePos, Quaternion.identity);
         Bomb bomb = bombGO.GetComponent<Bomb>();
         bomb.explosionRange = explosionRange;
+        bomb.explodeDelay = explodeDelay;
         _currentBombCount++;
 
         bomb.OnExploded += () => _currentBombCount--;

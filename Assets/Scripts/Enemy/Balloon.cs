@@ -22,7 +22,7 @@ public class Balloon : MonoBehaviour
 
     void Start()
     {
-        // SnapToGrid();
+        SnapToGrid();
         ChooseNewDirection();
     }
 

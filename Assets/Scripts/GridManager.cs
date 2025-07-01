@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 public class GridManager : MonoBehaviour
 {
-    public static GridManager Instance { get; private set;}
+    public static GridManager Instance { get; private set; }
 
     [Header("GamePlay tilemap")]
     [SerializeField] private Tilemap _tilemap;
@@ -32,5 +32,11 @@ public class GridManager : MonoBehaviour
         // spawnPos.y = _tilemap.transform.position.y;
         spawnPos.y = 2.5f;
         return spawnPos;
+    }
+
+    public void SnapToGrid(Transform trans)
+    {
+        // chỉnh vị trí về đúng ô để tránh lệch lưới
+        trans.position = GetPostionCellCenter(trans.position);
     }
 }
