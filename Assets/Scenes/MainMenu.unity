@@ -373,7 +373,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bomberman
+  m_text: Bomberman 3D
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3ef46cdf74c67f34aa3c2c6d9e8db677, type: 2}
   m_sharedMaterial: {fileID: 5981639240607271986, guid: 3ef46cdf74c67f34aa3c2c6d9e8db677, type: 2}

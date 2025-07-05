@@ -78,7 +78,6 @@ public class Bomb : MonoBehaviour
             if (hit.gameObject.layer == LayerMask.NameToLayer("Wall")) return true;
             if (hit.gameObject.layer == LayerMask.NameToLayer("Breakable"))
             {
-                // Debug.Log("Phá gạch");
                 Destroy(hit.gameObject);
                 ItemManager.Instance?.PlaceItem(pos);
                 return true;
@@ -86,15 +85,15 @@ public class Bomb : MonoBehaviour
 
             if (hit.CompareTag("Enemy"))
             {
-                // Debug.Log("Enemy");
                 Destroy(hit.gameObject);
+                int score = 100;
+                GameManager.Instance?.IncreaseScore(score);
                 return false;
             }
 
             if (hit.CompareTag("Player"))
             {
                 Player player = hit.GetComponent<Player>();
-                // Debug.Log("Chết");
                 player.Die();
                 return false;
             }

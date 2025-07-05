@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -16,10 +17,11 @@ public class Player : MonoBehaviour
     public int maxBomb = 1;
     private int _currentBombCount = 0;
     public int explosionRange = 1;
+
+    public event Action OnPlayerDeath;
     public bool isDead = false;
 
     public float explodeDelay = 2f;
-
 
     void Awake()
     {
@@ -45,7 +47,6 @@ public class Player : MonoBehaviour
 
         if (InputDirection.sqrMagnitude > 0.01f && !isDead)
         {
-            // Lấy góc quay từ hướng di chuyển
             Quaternion targetRotation = Quaternion.LookRotation(InputDirection);
             // Xoay dần cho mượt
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
@@ -77,12 +78,11 @@ public class Player : MonoBehaviour
         _currentBombCount++;
 
         bomb.OnExploded += () => _currentBombCount--;
-
     }
     public void Die()
     {
         isDead = true;
         speed = 0f;
-        //GAME OVER
+        OnPlayerDeath?.Invoke();
     }
 }
