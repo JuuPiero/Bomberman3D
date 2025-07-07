@@ -22,12 +22,12 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        _lifeCountText.text = GameManager.Instance.LifeCount.ToString();
+        _lifeCountText.text = "LEFT " +  GameManager.Instance.LifeCount.ToString();
     }
 
     void UpdateTime()
     {
-        _timeText.text = "Time: " + Mathf.RoundToInt(GameManager.Instance.TimeLeft);
+        _timeText.text = "Time " + Mathf.RoundToInt(GameManager.Instance.TimeLeft);
     }
 
     void UpdateScore()

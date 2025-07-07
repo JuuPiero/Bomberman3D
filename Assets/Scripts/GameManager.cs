@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private bool _isGameOver = false;
 
+    [SerializeField] private int _enemyCount;
+
     void Awake()
     {
         if (Instance == null || Instance != this)
@@ -49,6 +51,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        _enemyCount = FindObjectsByType<Enemy>(FindObjectsSortMode.None).Length;
     }
 
     void Start()
@@ -74,20 +78,13 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Time.timeScale = 0f;
         _isGameOver = true;
-        if (Score >= Data.highScore)
-        {
-            
-        }
+        ReduceLifeCount();
     }
 
     public void NextStage()
     {
-        if (Score >= Data.highScore)
-        {
-            
-        }
+      
     }
 
     private void UpdateGameTime()
@@ -102,21 +99,22 @@ public class GameManager : MonoBehaviour
     public void IncreaseScore(int score)
     {
         Score += score;
+        _enemyCount--;
     }
 
     void ReduceLifeCount()
     {
-        _lifeCount--;
+        Data.lifeCountLeft--;
         if (_lifeCount < 0)
         {
-            //Backto Main menu
+            SceneManager.LoadScene("MainMenu");
         }
         ResetStage();
-        //Save
     }
 
     void ResetStage()
     {
+        Data.ResetData();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -36,7 +36,12 @@ public class GridManager : MonoBehaviour
 
     public void SnapToGrid(Transform trans)
     {
-        // chỉnh vị trí về đúng ô để tránh lệch lưới
         trans.position = GetPostionCellCenter(trans.position);
+    }
+
+    public bool IsInsideMap(Vector3 worldPos)
+    {
+        Vector3Int cell = _tilemap.WorldToCell(worldPos);
+        return _tilemap.HasTile(cell);
     }
 }

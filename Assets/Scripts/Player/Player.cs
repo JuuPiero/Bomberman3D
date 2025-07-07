@@ -39,32 +39,36 @@ public class Player : MonoBehaviour
         StateMachine.Initialize(StateMachine.GetState<PlayerIdleState>());
     }
 
-    void Update()
+    void HandleInput()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         InputDirection = new Vector3(horizontal, 0f, vertical);
-
-        if (InputDirection.sqrMagnitude > 0.01f && !isDead)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(InputDirection);
-            // Xoay dần cho mượt
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
-        }
-
         if (Input.GetButtonDown("Jump"))
         {
             PlaceBomb();
         }
-
+    }
+    void Update()
+    {
+        HandleInput();
+        HandleFlip();
         StateMachine?.Update();
     }
 
     void FixedUpdate()
     {
         RB.linearVelocity = new Vector3(InputDirection.x * speed, RB.linearVelocity.y, InputDirection.z * speed);
-
         StateMachine?.FixedUpdate();
+    }
+    void HandleFlip()
+    {
+        if (InputDirection.sqrMagnitude > 0.01f && !isDead)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(InputDirection);
+            // Xoay dần cho mượt
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+        }
     }
 
     void PlaceBomb()

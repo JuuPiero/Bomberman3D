@@ -85,8 +85,8 @@ public class Bomb : MonoBehaviour
 
             if (hit.CompareTag("Enemy"))
             {
+                int score = hit.GetComponent<Enemy>().score;
                 Destroy(hit.gameObject);
-                int score = 100;
                 GameManager.Instance?.IncreaseScore(score);
                 return false;
             }

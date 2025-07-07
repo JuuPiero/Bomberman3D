@@ -47,9 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad92902ce5a75f6468383c8651e46646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
   gridSize: 2
-  currentDirection: {x: 0, y: 0, z: 0}
+  _moveSpeed: 2
+  _currentDirection: {x: 0, y: 0, z: 0}
+  score: 100
 --- !u!54 &6165428025838126350
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -97,9 +98,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.7
-  m_Height: 2
+  m_Height: 2.3
   m_Direction: 1
-  m_Center: {x: 0, y: 1.2, z: -0.1}
+  m_Center: {x: 0, y: 1, z: -0.100000024}
 --- !u!1001 &3726159874884221579
 PrefabInstance:
   m_ObjectHideFlags: 0

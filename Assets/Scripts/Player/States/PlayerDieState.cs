@@ -29,7 +29,7 @@ public class PlayerDieState : PlayerState
     IEnumerator DieCO()
     {
         yield return new WaitForSeconds(4f);
-        SceneManager.LoadScene("MainMenu");
+        GameManager.Instance?.GameOver();
         // Open Panel Over
     }
 }
