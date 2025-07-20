@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
         StateMachine.Initialize(StateMachine.GetState<PlayerIdleState>());
     }
 
-    void HandleInput()
+    private void HandleInput()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -49,19 +49,19 @@ public class Player : MonoBehaviour
             PlaceBomb();
         }
     }
-    void Update()
+    private void Update()
     {
         HandleInput();
         HandleFlip();
         StateMachine?.Update();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         RB.linearVelocity = new Vector3(InputDirection.x * speed, RB.linearVelocity.y, InputDirection.z * speed);
         StateMachine?.FixedUpdate();
     }
-    void HandleFlip()
+    private void HandleFlip()
     {
         if (InputDirection.sqrMagnitude > 0.01f && !isDead)
         {
@@ -71,9 +71,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    void PlaceBomb()
+    private void PlaceBomb()
     {
         if (_currentBombCount >= maxBomb) return;
+        AudioManager.Instance?.PlaySFX("PlaceBomb");
         Vector3 placePos = GridManager.Instance.GetPostionCellCenter(transform.position);
         GameObject bombGO = Instantiate(bombPrefab, placePos, Quaternion.identity);
         Bomb bomb = bombGO.GetComponent<Bomb>();

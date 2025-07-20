@@ -33,6 +33,7 @@ public class Bomb : MonoBehaviour
         yield return new WaitForSeconds(explodeDelay);
         OnExploded?.Invoke();
         ExplodeAt(transform.position);
+        AudioManager.Instance?.PlaySFX("Explosion");
 
         foreach (var dir in _directions)
         {
@@ -56,18 +57,6 @@ public class Bomb : MonoBehaviour
         Destroy(explosion, 0.8f); // xóa explosion
     }
 
-    // void OnDrawGizmos()
-    // {
-    //     foreach (var dir in _directions)
-    //     {
-    //         for (int i = 1; i <= explosionRange; i++)
-    //         {
-    //             Vector3 pos = transform.position + dir * i * GridManager.Instance.GetCellSize().x;
-    //             pos = GridManager.Instance.GetPostionCellCenter(pos);
-    //             Gizmos.DrawWireSphere(pos, GridManager.Instance.GetCellSize().x / 2f);
-    //         }
-    //     }
-    // }
 
     bool CheckObstacle(Vector3 pos)
     {
@@ -85,6 +74,7 @@ public class Bomb : MonoBehaviour
 
             if (hit.CompareTag("Enemy"))
             {
+                AudioManager.Instance?.PlaySFX("EnemyDie");
                 int score = hit.GetComponent<Enemy>().score;
                 Destroy(hit.gameObject);
                 GameManager.Instance?.IncreaseScore(score);

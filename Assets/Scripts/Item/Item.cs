@@ -21,6 +21,7 @@ public class Item : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            AudioManager.Instance?.PlaySFX("GetItem");
             Player player = other.GetComponent<Player>();
             switch (type)
             {

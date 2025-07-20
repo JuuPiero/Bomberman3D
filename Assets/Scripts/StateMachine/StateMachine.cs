@@ -31,7 +31,6 @@ public class StateMachine {
     public void AddState(State state)
     {
         state.StateMachine ??= this;
-        // states.Add(state);
         states.Insert(0, state);
     }
 
