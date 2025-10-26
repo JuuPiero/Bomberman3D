@@ -106,6 +106,7 @@ MonoBehaviour:
   maxBomb: 1
   explosionRange: 1
   isDead: 0
+  explodeDelay: 2
 --- !u!1 &7196786741519711012
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,19 +190,57 @@ PrefabInstance:
       propertyPath: m_Name
       value: Visual
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: dc6feaf8695d85a499671727bcd880c3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e1aeb2fbdf2f0a4e8a3037eea410ce0, type: 2}
+    - target: {fileID: 1630794972795428178, guid: dc6feaf8695d85a499671727bcd880c3, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d10c85284351e442ab13813074276e2, type: 2}
+    - target: {fileID: 1630794972795428178, guid: dc6feaf8695d85a499671727bcd880c3, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ebfd9c0f34efb114399b17fae640761c, type: 2}
+    - target: {fileID: 1630794972795428178, guid: dc6feaf8695d85a499671727bcd880c3, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 84a55c1a2808fcc48b13e8b302087050, type: 2}
+    - target: {fileID: 1630794972795428178, guid: dc6feaf8695d85a499671727bcd880c3, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3d965ab15112a3e47ae5f145e71bc166, type: 2}
+    - target: {fileID: 1630794972795428178, guid: dc6feaf8695d85a499671727bcd880c3, type: 3}
+      propertyPath: 'm_Materials.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a5c180ee360cca449a5a23b55b81af27, type: 2}
+    - target: {fileID: 1630794972795428178, guid: dc6feaf8695d85a499671727bcd880c3, type: 3}
+      propertyPath: 'm_Materials.Array.data[6]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 62c48fbd1fcf7bc4b9b31335e22b9daf, type: 2}
+    - target: {fileID: 1630794972795428178, guid: dc6feaf8695d85a499671727bcd880c3, type: 3}
+      propertyPath: 'm_Materials.Array.data[7]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 56364be70daafe749b15bf785cdab737, type: 2}
+    - target: {fileID: 1630794972795428178, guid: dc6feaf8695d85a499671727bcd880c3, type: 3}
+      propertyPath: 'm_Materials.Array.data[8]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 978dd4476110b2042b6db2a3c8eaa0fe, type: 2}
+    - target: {fileID: 1630794972795428178, guid: dc6feaf8695d85a499671727bcd880c3, type: 3}
+      propertyPath: 'm_Materials.Array.data[9]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3125fabaa680c5943b615611b309a973, type: 2}
+    - target: {fileID: 1630794972795428178, guid: dc6feaf8695d85a499671727bcd880c3, type: 3}
+      propertyPath: 'm_Materials.Array.data[10]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f97eefc6950aeea419b65ef030a70143, type: 2}
     - target: {fileID: 5866666021909216657, guid: dc6feaf8695d85a499671727bcd880c3, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: e4ca7a52f4154d547a200a590714ba06, type: 2}
     - target: {fileID: 5866666021909216657, guid: dc6feaf8695d85a499671727bcd880c3, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
-        'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:RightArm'\n\tTransform
-        'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform 'mixamorig:RightFoot'\n\tTransform
-        'mixamorig:Head'\n\tTransform 'mixamorig:LeftUpLeg'\n\tand more ...\n\tFrom
-        animation clip 'mixamo.com'"
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
