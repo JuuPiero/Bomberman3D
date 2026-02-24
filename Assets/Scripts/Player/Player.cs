@@ -1,7 +1,8 @@
 using System;
+using Photon.Pun;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviourPun
 {
     public GameObject bombPrefab;
     public GameObject explosionPrefab;
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
+        if(!photonView.IsMine) return;
         HandleInput();
         HandleFlip();
         StateMachine?.Update();

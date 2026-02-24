@@ -2024,7 +2024,7 @@ GameObject:
   - component: {fileID: 25486289}
   - component: {fileID: 25486288}
   m_Layer: 0
-  m_Name: Level (0)
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78375,6 +78375,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4602233540854452591, guid: 0e9407946eff92d44bef4520d98cb6a4, type: 3}
   m_PrefabInstance: {fileID: 1291556233}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1292234569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 946294207791255281, guid: fa1298dbb2ecb624abb74a9079b85207, type: 3}
+  m_PrefabInstance: {fileID: 1387654615}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1295187758
 GameObject:
   m_ObjectHideFlags: 0
@@ -84535,16 +84540,48 @@ PrefabInstance:
       propertyPath: explodeDelay
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8449292869079185570, guid: fa1298dbb2ecb624abb74a9079b85207, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 946294207791255281, guid: fa1298dbb2ecb624abb74a9079b85207, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1387654620}
   m_SourcePrefab: {fileID: 100100000, guid: fa1298dbb2ecb624abb74a9079b85207, type: 3}
 --- !u!4 &1387654616 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1619765184449125438, guid: fa1298dbb2ecb624abb74a9079b85207, type: 3}
   m_PrefabInstance: {fileID: 1387654615}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1387654620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292234569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 267080131
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!1 &1387894215
 GameObject:
   m_ObjectHideFlags: 0

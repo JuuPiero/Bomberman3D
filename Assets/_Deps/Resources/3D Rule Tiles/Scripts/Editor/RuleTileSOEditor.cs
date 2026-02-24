@@ -10,8 +10,9 @@ public class RuleTileSOEditor : Editor
         VisualElement myInspector = new VisualElement();
 
         // Load and clone a visual tree from UXML
-        VisualTreeAsset visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Resources/3D Rule Tiles/Scripts/Editor/RuleTileSO_UXML.uxml");
+        VisualTreeAsset visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/_Deps/Resources/3D Rule Tiles/Scripts/Editor/RuleTileSO_UXML.uxml");
         visualTree.CloneTree(myInspector);
+        // visualTree.Instantiate();
 
         // Return the finished inspector UI
         return myInspector;

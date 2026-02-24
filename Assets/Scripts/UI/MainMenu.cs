@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -6,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public Button startButton;
     public Button exitButton;
-    public Button continueButton;
+    //public Button continueButton;
 
 
 
@@ -14,7 +15,8 @@ public class MainMenu : MonoBehaviour
     {
         startButton?.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("Level1");
+            //SceneManager.LoadScene("Level1");
+            PhotonNetwork.LoadLevel("Level1");
         });
         exitButton?.onClick.AddListener(() =>
         {

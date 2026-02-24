@@ -69,5 +69,4 @@ public class StateMachine {
         var state = states.Where(s => s.GetType() == typeof(T)).FirstOrDefault();
         return state != null ? state : null;
     }
-
 }
