@@ -1,0 +1,73 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="../Common.uss" />
+    <Style src="MainMenu.uss" />
+    <ui:VisualElement class="app screen">
+        <ui:VisualElement class="panel room">
+            <ui:VisualElement class="panel__header">
+                <ui:VisualElement>
+                    <ui:Label name="room-title" text="ROOM" enable-rich-text="false" class="panel__title" />
+                    <ui:VisualElement class="room__meta">
+                        <ui:Label name="room-visibility" text="PUBLIC" class="pill" />
+                        <ui:Label name="room-count" text="1/4 PLAYERS" class="muted" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="code-box">
+                    <ui:Label text="ROOM CODE" class="code-box__caption" />
+                    <ui:VisualElement class="code-box__row">
+                        <ui:Label name="room-code" text="ABCDE" enable-rich-text="false" class="code-box__code" />
+                        <ui:Button name="btn-copy-code" text="COPY" focusable="false" class="btn btn--small" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:VisualElement name="slots" class="slots">
+                <ui:VisualElement name="slot-0" class="slot">
+                    <ui:VisualElement class="slot__avatar player-bg--0"><ui:Label text="P1" class="slot__index" /></ui:VisualElement>
+                    <ui:Label name="slot-name" text="WAITING..." enable-rich-text="false" class="slot__name" />
+                    <ui:VisualElement class="slot__badges">
+                        <ui:Label name="slot-host" text="HOST" class="pill badge--host" />
+                        <ui:Label name="slot-you" text="YOU" class="pill badge--you" />
+                    </ui:VisualElement>
+                    <ui:Label name="slot-status" text="EMPTY" class="slot__status" />
+                </ui:VisualElement>
+                <ui:VisualElement name="slot-1" class="slot">
+                    <ui:VisualElement class="slot__avatar player-bg--1"><ui:Label text="P2" class="slot__index" /></ui:VisualElement>
+                    <ui:Label name="slot-name" text="WAITING..." enable-rich-text="false" class="slot__name" />
+                    <ui:VisualElement class="slot__badges">
+                        <ui:Label name="slot-host" text="HOST" class="pill badge--host" />
+                        <ui:Label name="slot-you" text="YOU" class="pill badge--you" />
+                    </ui:VisualElement>
+                    <ui:Label name="slot-status" text="EMPTY" class="slot__status" />
+                </ui:VisualElement>
+                <ui:VisualElement name="slot-2" class="slot">
+                    <ui:VisualElement class="slot__avatar player-bg--2"><ui:Label text="P3" class="slot__index" /></ui:VisualElement>
+                    <ui:Label name="slot-name" text="WAITING..." enable-rich-text="false" class="slot__name" />
+                    <ui:VisualElement class="slot__badges">
+                        <ui:Label name="slot-host" text="HOST" class="pill badge--host" />
+                        <ui:Label name="slot-you" text="YOU" class="pill badge--you" />
+                    </ui:VisualElement>
+                    <ui:Label name="slot-status" text="EMPTY" class="slot__status" />
+                </ui:VisualElement>
+                <ui:VisualElement name="slot-3" class="slot">
+                    <ui:VisualElement class="slot__avatar player-bg--3"><ui:Label text="P4" class="slot__index" /></ui:VisualElement>
+                    <ui:Label name="slot-name" text="WAITING..." enable-rich-text="false" class="slot__name" />
+                    <ui:VisualElement class="slot__badges">
+                        <ui:Label name="slot-host" text="HOST" class="pill badge--host" />
+                        <ui:Label name="slot-you" text="YOU" class="pill badge--you" />
+                    </ui:VisualElement>
+                    <ui:Label name="slot-status" text="EMPTY" class="slot__status" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:Label name="room-hint" text="" class="room__hint" />
+
+            <ui:VisualElement class="row">
+                <ui:Button name="btn-leave" text="LEAVE" focusable="false" class="btn btn--danger" style="margin-left: 0;" />
+                <ui:Label text="MOVE: WASD / ARROWS   BOMB: SPACE" class="room__controls" />
+                <ui:VisualElement class="spacer" />
+                <ui:Button name="btn-ready" text="READY" focusable="false" class="btn btn--success" />
+                <ui:Button name="btn-start" text="START GAME" focusable="false" class="btn btn--primary" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

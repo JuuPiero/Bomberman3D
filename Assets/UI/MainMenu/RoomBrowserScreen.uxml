@@ -1,0 +1,44 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="../Common.uss" />
+    <Style src="MainMenu.uss" />
+    <ui:VisualElement class="app screen">
+        <ui:VisualElement class="panel browser">
+            <ui:VisualElement class="panel__header">
+                <ui:VisualElement>
+                    <ui:Label text="FIND A ROOM" class="panel__title" />
+                    <ui:Label name="lobby-status" text="CONNECTED" class="muted" />
+                </ui:VisualElement>
+                <ui:VisualElement class="nick-chip">
+                    <ui:Label name="lobby-nickname" text="PLAYER" enable-rich-text="false" class="nick-chip__name" />
+                    <ui:Button name="btn-lobby-name" text="CHANGE" focusable="false" class="btn btn--small" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:VisualElement class="row browser__toolbar">
+                <ui:TextField name="search-field" max-length="20" class="field field--grow" />
+                <ui:Button name="btn-quick" text="QUICK PLAY" focusable="false" class="btn btn--success" />
+                <ui:Button name="btn-create" text="CREATE ROOM" focusable="false" class="btn btn--primary" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="row room-list-header">
+                <ui:Label text="ROOM" class="col--name" />
+                <ui:Label text="HOST" class="col--host" />
+                <ui:Label text="PLAYERS" class="col--players" />
+                <ui:Label text="STATUS" class="col--status" />
+                <ui:VisualElement class="col--action" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="room-list-wrap">
+                <ui:ScrollView name="room-list" mode="Vertical" horizontal-scroller-visibility="Hidden" class="room-list" />
+                <ui:Label name="room-empty" text="NO ROOMS YET - CREATE ONE!" class="room-list__empty" picking-mode="Ignore" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="row browser__footer">
+                <ui:Button name="btn-lobby-back" text="BACK" focusable="false" class="btn" style="margin-left: 0;" />
+                <ui:VisualElement class="spacer" />
+                <ui:TextField name="code-field" max-length="20" class="field field--code" />
+                <ui:Button name="btn-join-code" text="JOIN BY CODE" focusable="false" class="btn" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

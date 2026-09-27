@@ -2,18 +2,17 @@ using UnityEngine;
 
 public class Onion : Balloon
 {
-    [SerializeField] protected Player _player;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        _player = FindFirstObjectByType<Player>();
-    }
-
-
     protected override void ChooseNewDirection()
     {
-        Vector3 playerPos = _player.transform.position;
+        // Players are spawned at runtime, so look for the closest one every time.
+        Player target = GameManager.Instance != null ? GameManager.Instance.GetClosestAlivePlayer(transform.position) : null;
+        if (target == null)
+        {
+            base.ChooseNewDirection();
+            return;
+        }
+
+        Vector3 playerPos = target.transform.position;
         Vector3 dirToPlayer = playerPos - transform.position;
 
         Vector3 gridCellSize = GridManager.Instance.GetCellSize();

@@ -100,8 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493e09f589a14054caca9f49cf584816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombPrefab: {fileID: 147883374885345943, guid: 1cfbf813ed72e7446930ece495d384b2, type: 3}
-  explosionPrefab: {fileID: 697063391489662732, guid: 915fffab5312c9042a835df282e2793b, type: 3}
   <Anim>k__BackingField: {fileID: 0}
   <RB>k__BackingField: {fileID: 0}
   speed: 6

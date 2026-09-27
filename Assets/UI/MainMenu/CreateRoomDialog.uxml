@@ -1,0 +1,32 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="../Common.uss" />
+    <Style src="MainMenu.uss" />
+    <ui:VisualElement class="app overlay">
+        <ui:VisualElement class="panel dialog">
+            <ui:Label text="CREATE ROOM" class="panel__title" />
+
+            <ui:Label text="ROOM NAME" class="field-label" />
+            <ui:TextField name="create-name" max-length="20" class="field" />
+
+            <ui:Label text="MAX PLAYERS" class="field-label" />
+            <ui:VisualElement class="seg">
+                <ui:Button name="max-2" text="2" focusable="false" class="seg__item" />
+                <ui:Button name="max-3" text="3" focusable="false" class="seg__item" />
+                <ui:Button name="max-4" text="4" focusable="false" class="seg__item" style="margin-right: 0;" />
+            </ui:VisualElement>
+
+            <ui:Label text="VISIBILITY" class="field-label" />
+            <ui:VisualElement class="seg">
+                <ui:Button name="vis-public" text="PUBLIC" focusable="false" class="seg__item" />
+                <ui:Button name="vis-private" text="PRIVATE" focusable="false" class="seg__item" style="margin-right: 0;" />
+            </ui:VisualElement>
+
+            <ui:Label name="create-hint" text="" class="muted create-dialog__hint" />
+
+            <ui:VisualElement class="row row--end create-dialog__footer">
+                <ui:Button name="btn-create-cancel" text="CANCEL" focusable="false" class="btn" />
+                <ui:Button name="btn-create-confirm" text="CREATE" focusable="false" class="btn btn--primary" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

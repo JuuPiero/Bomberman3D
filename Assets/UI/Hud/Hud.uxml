@@ -1,0 +1,71 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="../Common.uss" />
+    <Style src="Hud.uss" />
+    <ui:VisualElement name="hud" class="app hud" picking-mode="Ignore">
+        <ui:VisualElement name="nametags" class="nametags" picking-mode="Ignore" />
+
+        <ui:VisualElement class="hud__top" picking-mode="Ignore">
+            <ui:VisualElement class="hud__top-left" picking-mode="Ignore">
+                <ui:VisualElement class="hud-card" picking-mode="Ignore">
+                    <ui:Label text="TIME" class="hud-card__caption" picking-mode="Ignore" />
+                    <ui:Label name="time-label" text="0:00" class="hud-card__value" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <ui:VisualElement name="story-score" class="hud-card" picking-mode="Ignore">
+                    <ui:Label text="SCORE" class="hud-card__caption" picking-mode="Ignore" />
+                    <ui:Label name="score-label" text="0" class="hud-card__value" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <ui:VisualElement name="story-lives" class="hud-card" picking-mode="Ignore">
+                    <ui:Label text="LEFT" class="hud-card__caption" picking-mode="Ignore" />
+                    <ui:Label name="lives-label" text="5" class="hud-card__value" picking-mode="Ignore" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:VisualElement name="player-chips" class="player-chips" picking-mode="Ignore" />
+
+            <ui:Button name="btn-pause" text="MENU" focusable="false" class="btn btn--small hud__menu-btn" />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="hud__stats" picking-mode="Ignore">
+            <ui:VisualElement class="stat" picking-mode="Ignore">
+                <ui:VisualElement class="stat__icon stat__icon--bomb" picking-mode="Ignore" />
+                <ui:Label name="stat-bombs" text="1" class="stat__value" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement class="stat" picking-mode="Ignore">
+                <ui:VisualElement class="stat__icon stat__icon--fire" picking-mode="Ignore" />
+                <ui:Label name="stat-range" text="1" class="stat__value" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement class="stat" picking-mode="Ignore">
+                <ui:VisualElement class="stat__icon stat__icon--speed" picking-mode="Ignore" />
+                <ui:Label name="stat-speed" text="1" class="stat__value" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:Label text="MOVE: WASD / ARROWS   BOMB: SPACE   MENU: ESC" class="hud__hint" picking-mode="Ignore" />
+
+        <ui:VisualElement class="hud__center" picking-mode="Ignore">
+            <ui:Label name="countdown" text="3" class="countdown" picking-mode="Ignore" />
+            <ui:Label name="banner" text="WAITING FOR PLAYERS..." class="banner" picking-mode="Ignore" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="pause" class="overlay">
+            <ui:VisualElement class="panel dialog pause__panel">
+                <ui:Label text="PAUSED" class="panel__title" />
+                <ui:Label name="pause-hint" text="" class="muted" />
+                <ui:Button name="btn-resume" text="RESUME" focusable="false" class="btn btn--primary btn--block" />
+                <ui:Button name="btn-quit" text="LEAVE MATCH" focusable="false" class="btn btn--danger btn--block" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="result" class="overlay">
+            <ui:VisualElement class="panel dialog result__panel">
+                <ui:Label name="result-title" text="VICTORY!" class="result__title" />
+                <ui:Label name="result-subtitle" text="" enable-rich-text="false" class="result__subtitle" />
+                <ui:Label name="result-hint" text="" class="muted result__hint" />
+                <ui:VisualElement class="row row--center result__buttons">
+                    <ui:Button name="btn-result-secondary" text="MAIN MENU" focusable="false" class="btn btn--danger" style="margin-left: 0;" />
+                    <ui:Button name="btn-result-primary" text="TRY AGAIN" focusable="false" class="btn btn--primary" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

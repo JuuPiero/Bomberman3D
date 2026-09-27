@@ -1,103 +1,43 @@
-using System;
-using System.Collections;
 using UnityEngine;
+
+/// <summary>
+/// Visual + physical bomb. Timing and explosion are driven by <see cref="BombManager"/> so every
+/// client explodes the same bombs with the same result.
+/// </summary>
 public class Bomb : MonoBehaviour
 {
-    public GameObject explosionPrefab;
-    public float explodeDelay = 2f;
-    public int explosionRange = 1;
-    public float cellSize = 2f;
     [SerializeField] private Collider _collider;
 
-    public event Action OnExploded;
+    public int Id { get; private set; }
+    public int OwnerActor { get; private set; }
+    public Vector2Int Cell { get; private set; }
+    public int Range { get; private set; }
+    public double ExplodeAt { get; private set; }
 
-    private Vector3[] _directions = new Vector3[]
-    {
-        Vector3.forward,
-        Vector3.back,
-        Vector3.left,
-        Vector3.right
-    };
     void Awake()
     {
-        _collider = GetComponent<Collider>();
+        if (_collider == null) _collider = GetComponent<Collider>();
     }
 
-    void Start()
+    public void Init(int id, int ownerActor, Vector2Int cell, int range, double explodeAt)
     {
-        StartCoroutine(Explode());
+        Id = id;
+        OwnerActor = ownerActor;
+        Cell = cell;
+        Range = range;
+        ExplodeAt = explodeAt;
     }
 
-    IEnumerator Explode()
+    void FixedUpdate()
     {
-        yield return new WaitForSeconds(explodeDelay);
-        OnExploded?.Invoke();
-        ExplodeAt(transform.position);
-        AudioManager.Instance?.PlaySFX("Explosion");
+        // The bomb starts as a trigger so whoever placed it can walk off, then becomes solid.
+        if (!_collider.isTrigger) return;
 
-        foreach (var dir in _directions)
+        Bounds bounds = _collider.bounds;
+        foreach (Collider hit in Physics.OverlapBox(bounds.center, bounds.extents))
         {
-            for (int i = 1; i <= explosionRange; i++)
-            {
-                Vector3 pos = transform.position + dir * i * GridManager.Instance.GetCellSize().x;
-                pos = GridManager.Instance.GetPostionCellCenter(pos);
-
-                if (CheckObstacle(pos)) break;
-
-                ExplodeAt(pos);
-            }
+            if (hit.CompareTag("Player")) return;
         }
-
-        Destroy(gameObject); // xoá bom
+        _collider.isTrigger = false;
     }
-
-    void ExplodeAt(Vector3 pos)
-    {
-        GameObject explosion = Instantiate(explosionPrefab, pos, Quaternion.identity);
-        Destroy(explosion, 0.8f); // xóa explosion
-    }
-
-
-    bool CheckObstacle(Vector3 pos)
-    {
-        Collider[] hits = Physics.OverlapSphere(pos, 0.99f);
-
-        foreach (var hit in hits)
-        {
-            if (hit.gameObject.layer == LayerMask.NameToLayer("Wall")) return true;
-            if (hit.gameObject.layer == LayerMask.NameToLayer("Breakable"))
-            {
-                Destroy(hit.gameObject);
-                ItemManager.Instance?.PlaceItem(pos);
-                return true;
-            }
-
-            if (hit.CompareTag("Enemy"))
-            {
-                AudioManager.Instance?.PlaySFX("EnemyDie");
-                int score = hit.GetComponent<Enemy>().score;
-                Destroy(hit.gameObject);
-                GameManager.Instance?.IncreaseScore(score);
-                return false;
-            }
-
-            if (hit.CompareTag("Player"))
-            {
-                Player player = hit.GetComponent<Player>();
-                player.Die();
-                return false;
-            }
-        }
-
-        return false;
-    }
-
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            _collider.isTrigger = false;
-        }
-    }
-} 
+}

@@ -12,6 +12,15 @@ public class Item : MonoBehaviour
 
     public Vector3 rotationSpeed = new Vector3(0, 100, 0); // quay quanh trục Y
 
+    public int Id { get; private set; }
+    public Vector2Int Cell { get; private set; }
+
+    public void Init(int id, Vector2Int cell)
+    {
+        Id = id;
+        Cell = cell;
+    }
+
     void Update()
     {
         transform.Rotate(rotationSpeed * Time.deltaTime);
@@ -19,25 +28,12 @@ public class Item : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            AudioManager.Instance?.PlaySFX("GetItem");
-            Player player = other.GetComponent<Player>();
-            switch (type)
-            {
-                case ItemType.Bomb:
-                    player.maxBomb += 1;
-                    break;
-                case ItemType.Explosion:
-                    player.explosionRange += 1;
-                    break;
-                case ItemType.Speed:
-                    player.speed += 1f;
-                    break;
-                default:
-                    break;
-            }
-            Destroy(gameObject);
-        }
+        if (!other.CompareTag("Player")) return;
+
+        // Only the owner of a player asks for the pickup; the master decides who gets it.
+        Player player = other.GetComponent<Player>();
+        if (player == null || !player.IsLocal || player.isDead) return;
+
+        ItemManager.Instance?.RequestPickup(this);
     }
 }

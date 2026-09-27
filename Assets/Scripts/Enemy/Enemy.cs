@@ -16,6 +16,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected float _moveSpeed = 2f;
     [SerializeField] protected Vector3 _currentDirection;
     public int score = 100;
+    private bool _isDead;
     protected virtual void Awake()
     {
         RB = GetComponent<Rigidbody>();
@@ -28,11 +29,26 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        if (BombManager.Instance != null && BombManager.Instance.IsOnFire(GridManager.Instance.WorldToCell(transform.position)))
+        {
+            Die();
+            return;
+        }
+
         if (_currentDirection != Vector3.zero)
         {
             RB.linearVelocity = new Vector3(_moveSpeed * _currentDirection.x, 0f, _moveSpeed * _currentDirection.z);
             RotateTo(_currentDirection);
         }
+    }
+
+    public void Die()
+    {
+        if (_isDead) return;
+        _isDead = true;
+        AudioManager.Instance?.PlaySFX("EnemyDie");
+        GameManager.Instance?.IncreaseScore(score);
+        Destroy(gameObject);
     }
 
     protected virtual void RotateTo(Vector3 dir)
@@ -50,7 +66,7 @@ public abstract class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Player player = other.gameObject.GetComponent<Player>();
-            player.Die();
+            player.Kill();
             ChooseNewDirection();
             return;
         }

@@ -1,15 +1,8 @@
-using System.Collections;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
 public class PlayerDieState : PlayerState
 {
+    // What happens after a death (lose a life, end the round...) is handled by GameManager.
     public PlayerDieState(Player player, string animationBoolName = "") : base(player, animationBoolName)
     {
-        _player.OnPlayerDeath += PlayerDie;
-    }
-    ~PlayerDieState() {
-        _player.OnPlayerDeath -= PlayerDie;
     }
 
     public override bool IsMatchingConditions()
@@ -20,16 +13,5 @@ public class PlayerDieState : PlayerState
     {
         base.Enter();
         CanExit = false;
-    }
-
-    void PlayerDie() {
-        _player.StartCoroutine(DieCO());
-    }
-
-    IEnumerator DieCO()
-    {
-        yield return new WaitForSeconds(4f);
-        GameManager.Instance?.GameOver();
-        // Open Panel Over
     }
 }

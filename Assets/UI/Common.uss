@@ -1,0 +1,420 @@
+/* ==========================================================================
+   Bomberman - shared UI Toolkit styles (menus + HUD)
+   Component rules are prefixed with ".app" so they win over the default
+   runtime theme (e.g. .unity-button:hover:active).
+   ========================================================================== */
+
+:root {
+    --bg: #0e1330;
+    --bg-deep: #080b1f;
+    --panel: #19204a;
+    --panel-light: #273170;
+    --panel-hover: #33408c;
+    --outline: #000000;
+    --text: #fff7e6;
+    --text-muted: #9aa4d6;
+    --accent: #ff8a1f;
+    --accent-light: #ffab5c;
+    --accent-dark: #b85600;
+    --yellow: #ffd23f;
+    --green: #3ddc84;
+    --green-light: #74eca9;
+    --green-dark: #1c8a4c;
+    --red: #ff4d5e;
+    --red-light: #ff8591;
+    --red-dark: #a3202f;
+    --blue: #4da3ff;
+    --blue-dark: #1e5fb3;
+
+    -unity-font: url("project://database/Assets/Fonts/Jersey25-Regular.ttf");
+    -unity-font-definition: url("project://database/Assets/Fonts/Jersey25-Regular.ttf");
+    color: var(--text);
+}
+
+.app {
+    flex-grow: 1;
+    -unity-font: url("project://database/Assets/Fonts/Jersey25-Regular.ttf");
+    -unity-font-definition: url("project://database/Assets/Fonts/Jersey25-Regular.ttf");
+    color: var(--text);
+    font-size: 28px;
+}
+
+.app .unity-text-element {
+    -unity-font: url("project://database/Assets/Fonts/Jersey25-Regular.ttf");
+    -unity-font-definition: url("project://database/Assets/Fonts/Jersey25-Regular.ttf");
+}
+
+/* ---------- Screens & view transitions ---------- */
+
+.screen-host {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.screen {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.view {
+    transition-property: opacity, translate;
+    transition-duration: 0.18s, 0.18s;
+    transition-timing-function: ease-out-cubic, ease-out-cubic;
+}
+
+.view--enter {
+    opacity: 0;
+    translate: 0 24px;
+}
+
+/* ---------- Layout helpers ---------- */
+
+.row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.row--end {
+    justify-content: flex-end;
+}
+
+.row--center {
+    justify-content: center;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+.muted {
+    color: var(--text-muted);
+    font-size: 24px;
+}
+
+.small {
+    font-size: 22px;
+}
+
+.error-text {
+    color: var(--red);
+    font-size: 24px;
+    min-height: 30px;
+}
+
+/* ---------- Panels ---------- */
+
+.app .panel {
+    background-color: var(--panel);
+    border-width: 4px;
+    border-bottom-width: 12px;
+    border-color: var(--outline);
+    border-radius: 24px;
+    padding: 32px 40px 28px 40px;
+}
+
+.panel__header {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.panel__title {
+    font-size: 64px;
+    color: var(--yellow);
+    letter-spacing: 2px;
+    text-shadow: 0 5px 0 #000000;
+    margin: 0 0 4px 0;
+    padding: 0;
+}
+
+.field-label {
+    font-size: 24px;
+    color: var(--text-muted);
+    letter-spacing: 3px;
+    margin: 16px 0 6px 2px;
+}
+
+/* ---------- Buttons ---------- */
+
+.app .btn {
+    height: 72px;
+    min-width: 200px;
+    margin: 0 0 0 16px;
+    padding: 0 30px;
+    border-width: 4px;
+    border-bottom-width: 10px;
+    border-color: var(--outline);
+    border-bottom-color: #10142e;
+    border-radius: 16px;
+    background-color: var(--panel-light);
+    color: var(--text);
+    font-size: 34px;
+    letter-spacing: 2px;
+    -unity-text-align: middle-center;
+    white-space: nowrap;
+    transition-property: background-color, scale, translate;
+    transition-duration: 0.08s, 0.08s, 0.08s;
+}
+
+.app .btn:hover {
+    background-color: var(--panel-hover);
+    scale: 1.03 1.03;
+}
+
+.app .btn:active,
+.app .btn:hover:active {
+    background-color: var(--panel-light);
+    translate: 0 4px;
+    scale: 0.98 0.98;
+}
+
+.app .btn:disabled {
+    opacity: 0.4;
+    scale: 1 1;
+}
+
+.app .btn--primary {
+    background-color: var(--accent);
+    border-bottom-color: var(--accent-dark);
+    color: #2a1200;
+}
+
+.app .btn--primary:hover {
+    background-color: var(--accent-light);
+}
+
+.app .btn--primary:active,
+.app .btn--primary:hover:active {
+    background-color: var(--accent);
+}
+
+.app .btn--success {
+    background-color: var(--green);
+    border-bottom-color: var(--green-dark);
+    color: #04210f;
+}
+
+.app .btn--success:hover {
+    background-color: var(--green-light);
+}
+
+.app .btn--success:active,
+.app .btn--success:hover:active {
+    background-color: var(--green);
+}
+
+.app .btn--danger {
+    background-color: var(--red);
+    border-bottom-color: var(--red-dark);
+    color: #2b0006;
+}
+
+.app .btn--danger:hover {
+    background-color: var(--red-light);
+}
+
+.app .btn--danger:active,
+.app .btn--danger:hover:active {
+    background-color: var(--red);
+}
+
+.app .btn--large {
+    height: 96px;
+    font-size: 44px;
+    margin: 0 0 18px 0;
+}
+
+.app .btn--small {
+    height: 52px;
+    min-width: 0;
+    padding: 0 18px;
+    border-bottom-width: 7px;
+    border-radius: 12px;
+    font-size: 26px;
+}
+
+.app .btn--block {
+    margin: 12px 0 0 0;
+    width: 100%;
+}
+
+/* ---------- Segmented control (made of buttons) ---------- */
+
+.seg {
+    flex-direction: row;
+}
+
+.app .seg__item {
+    flex-grow: 1;
+    height: 60px;
+    margin: 0 10px 0 0;
+    border-width: 4px;
+    border-bottom-width: 8px;
+    border-color: var(--outline);
+    border-radius: 14px;
+    background-color: var(--bg-deep);
+    color: var(--text-muted);
+    font-size: 30px;
+    -unity-text-align: middle-center;
+}
+
+.app .seg__item:hover {
+    background-color: var(--panel-light);
+}
+
+.app .seg__item:active,
+.app .seg__item:hover:active {
+    background-color: var(--bg-deep);
+}
+
+.app .seg__item--selected,
+.app .seg__item--selected:hover,
+.app .seg__item--selected:hover:active {
+    background-color: var(--accent);
+    border-bottom-color: var(--accent-dark);
+    color: #2a1200;
+}
+
+/* ---------- Text fields ---------- */
+
+.app .field {
+    margin: 0;
+    padding: 0;
+}
+
+.app .field .unity-base-text-field__input {
+    min-height: 68px;
+    padding: 4px 20px;
+    border-width: 4px;
+    border-color: var(--outline);
+    border-radius: 14px;
+    background-color: var(--bg-deep);
+    color: var(--text);
+    font-size: 34px;
+    -unity-text-align: middle-left;
+    --unity-cursor-color: var(--accent);
+    --unity-selection-color: rgba(255, 138, 31, 0.45);
+}
+
+.app .field:hover .unity-base-text-field__input {
+    border-color: var(--panel-hover);
+}
+
+.app .field:focus .unity-base-text-field__input {
+    border-color: var(--accent);
+}
+
+/* ---------- Pills & badges ---------- */
+
+.pill {
+    font-size: 22px;
+    letter-spacing: 2px;
+    padding: 2px 14px;
+    border-radius: 10px;
+    border-width: 3px;
+    border-color: var(--outline);
+    background-color: var(--panel-light);
+    color: var(--text);
+    -unity-text-align: middle-center;
+}
+
+.pill--good {
+    background-color: var(--green);
+    color: #04210f;
+}
+
+.pill--warn {
+    background-color: var(--yellow);
+    color: #2a2000;
+}
+
+.pill--bad {
+    background-color: var(--red);
+    color: #2b0006;
+}
+
+/* ---------- Overlays ---------- */
+
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(4, 6, 18, 0.72);
+}
+
+.dialog {
+    width: 760px;
+}
+
+/* Loading */
+
+.loading__box {
+    align-items: center;
+}
+
+.spinner {
+    width: 110px;
+    height: 110px;
+    border-width: 14px;
+    border-radius: 55px;
+    border-color: rgba(255, 255, 255, 0.15);
+    border-top-color: var(--accent);
+    margin-bottom: 26px;
+}
+
+.loading__text {
+    font-size: 48px;
+    letter-spacing: 4px;
+    color: var(--text);
+    margin-bottom: 20px;
+}
+
+/* Toast */
+
+.toast {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 36px;
+    align-items: center;
+}
+
+.toast__text {
+    max-width: 1100px;
+    padding: 10px 30px;
+    border-width: 4px;
+    border-bottom-width: 8px;
+    border-color: var(--outline);
+    border-radius: 16px;
+    background-color: var(--green);
+    color: #04210f;
+    font-size: 30px;
+    white-space: normal;
+    -unity-text-align: middle-center;
+}
+
+.toast--error .toast__text {
+    background-color: var(--red);
+    color: #2b0006;
+}
+
+/* ---------- Player colors (slot 0..3) ---------- */
+
+.player-bg--0 { background-color: #4da3ff; }
+.player-bg--1 { background-color: #ff4d5e; }
+.player-bg--2 { background-color: #3ddc84; }
+.player-bg--3 { background-color: #ffd23f; }
+
+.player-text--0 { color: #4da3ff; }
+.player-text--1 { color: #ff4d5e; }
+.player-text--2 { color: #3ddc84; }
+.player-text--3 { color: #ffd23f; }

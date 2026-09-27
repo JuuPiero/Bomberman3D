@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="../Common.uss" />
+    <Style src="MainMenu.uss" />
+    <ui:VisualElement class="app screen home">
+        <ui:VisualElement class="home__title-block">
+            <ui:Label text="BOMBERMAN" class="title" />
+            <ui:Label text="BATTLE ONLINE" class="subtitle-pill" />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="home__buttons">
+            <ui:Button name="btn-online" text="PLAY ONLINE" focusable="false" class="btn btn--primary btn--large" />
+            <ui:Button name="btn-story" text="STORY MODE" focusable="false" class="btn btn--large" />
+            <ui:Button name="btn-quit" text="QUIT" focusable="false" class="btn btn--danger btn--large" />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="home__profile">
+            <ui:Label text="PLAYING AS" class="muted" />
+            <ui:Label name="home-nickname" text="PLAYER" enable-rich-text="false" class="home__nickname" />
+            <ui:Button name="btn-edit-name" text="CHANGE" focusable="false" class="btn btn--small" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,36 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="../Common.uss" />
+    <Style src="MainMenu.uss" />
+    <ui:Template name="HomeScreen" src="HomeScreen.uxml" />
+    <ui:Template name="ProfileScreen" src="ProfileScreen.uxml" />
+    <ui:Template name="RoomBrowserScreen" src="RoomBrowserScreen.uxml" />
+    <ui:Template name="RoomScreen" src="RoomScreen.uxml" />
+    <ui:Template name="CreateRoomDialog" src="CreateRoomDialog.uxml" />
+    <ui:VisualElement name="app" class="app menu">
+        <ui:VisualElement class="menu__backdrop" picking-mode="Ignore">
+            <ui:VisualElement class="menu__stripe menu__stripe--1" picking-mode="Ignore" />
+            <ui:VisualElement class="menu__stripe menu__stripe--2" picking-mode="Ignore" />
+            <ui:VisualElement class="menu__stripe menu__stripe--3" picking-mode="Ignore" />
+        </ui:VisualElement>
+
+        <ui:Instance template="HomeScreen" name="home" class="screen-host" />
+        <ui:Instance template="ProfileScreen" name="profile" class="screen-host" />
+        <ui:Instance template="RoomBrowserScreen" name="browser" class="screen-host" />
+        <ui:Instance template="RoomScreen" name="room" class="screen-host" />
+        <ui:Instance template="CreateRoomDialog" name="create-dialog" class="screen-host" />
+
+        <ui:Label name="version" text="BOMBERMAN" class="menu__footer" picking-mode="Ignore" />
+
+        <ui:VisualElement name="loading" class="overlay loading">
+            <ui:VisualElement class="loading__box">
+                <ui:VisualElement name="loading-spinner" class="spinner" picking-mode="Ignore" />
+                <ui:Label name="loading-text" text="CONNECTING..." class="loading__text" />
+                <ui:Button name="btn-loading-cancel" text="CANCEL" focusable="false" class="btn btn--small" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="toast" class="toast" picking-mode="Ignore">
+            <ui:Label name="toast-text" text="MESSAGE" enable-rich-text="false" class="toast__text" picking-mode="Ignore" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

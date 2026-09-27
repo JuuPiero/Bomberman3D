@@ -1,5 +1,5 @@
+using Photon.Pun;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 public class Portal : MonoBehaviour
 {
     public string level;
@@ -7,16 +7,18 @@ public class Portal : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+
+        Player player = other.GetComponent<Player>();
+        if (player == null || !player.IsLocal || player.isDead) return;
+
+        if (string.IsNullOrEmpty(level))
         {
-            if (string.IsNullOrEmpty(level))
-            {
-                SceneManager.LoadScene("MainMenu");
-            }
-            else
-            {
-                SceneManager.LoadScene(level);
-            }
+            NetworkController.Instance.LeaveToMenu();
+        }
+        else
+        {
+            PhotonNetwork.LoadLevel(level);
         }
     }
 }

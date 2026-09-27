@@ -1,0 +1,264 @@
+/* ==========================================================================
+   In-game HUD
+   ========================================================================== */
+
+.hud {
+    flex-grow: 1;
+}
+
+.hud-card,
+.stat,
+.player-chip {
+    background-color: rgba(11, 16, 40, 0.86);
+    border-width: 4px;
+    border-bottom-width: 8px;
+    border-color: var(--outline);
+    border-radius: 16px;
+}
+
+/* ---------- Top bar ---------- */
+
+.hud__top {
+    position: absolute;
+    left: 28px;
+    top: 22px;
+    right: 28px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.hud__top-left {
+    flex-direction: row;
+}
+
+.hud-card {
+    min-width: 150px;
+    margin-right: 12px;
+    padding: 4px 22px 6px 22px;
+    align-items: center;
+}
+
+.hud-card__caption {
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    margin: 0;
+    padding: 0;
+}
+
+.hud-card__value {
+    font-size: 50px;
+    color: var(--yellow);
+    margin: -6px 0 0 0;
+    padding: 0;
+}
+
+.hud-card--danger .hud-card__value {
+    color: var(--red);
+}
+
+.player-chips {
+    flex-direction: row;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    justify-content: center;
+}
+
+.player-chip {
+    flex-direction: row;
+    align-items: center;
+    margin: 0 6px;
+    padding: 8px 18px 10px 12px;
+}
+
+.player-chip__dot {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-width: 3px;
+    border-color: var(--outline);
+    border-radius: 8px;
+}
+
+.player-chip__name {
+    font-size: 30px;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.player-chip--local .player-chip__name {
+    color: var(--yellow);
+}
+
+.player-chip--dead {
+    opacity: 0.35;
+}
+
+.player-chip--dead .player-chip__name {
+    color: var(--text-muted);
+}
+
+.app .hud__menu-btn {
+    margin-left: 0;
+}
+
+/* ---------- Stats (bottom left) ---------- */
+
+.hud__stats {
+    position: absolute;
+    left: 28px;
+    bottom: 24px;
+    flex-direction: row;
+}
+
+.stat {
+    flex-direction: row;
+    align-items: center;
+    margin-right: 12px;
+    padding: 6px 20px 8px 8px;
+}
+
+.stat__icon {
+    width: 52px;
+    height: 52px;
+    margin-right: 12px;
+    border-radius: 8px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.stat__icon--bomb { background-image: url("project://database/Assets/Sprites/bomb.png"); }
+.stat__icon--fire { background-image: url("project://database/Assets/Sprites/explosion.png"); }
+.stat__icon--speed { background-image: url("project://database/Assets/Sprites/speed.png"); }
+
+.stat__value {
+    font-size: 44px;
+    color: var(--text);
+    min-width: 28px;
+}
+
+.stat--bump .stat__value {
+    color: var(--yellow);
+}
+
+.hud__hint {
+    position: absolute;
+    right: 28px;
+    bottom: 26px;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: rgba(255, 247, 230, 0.55);
+}
+
+/* ---------- Name tags ---------- */
+
+.nametags {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.nametag {
+    position: absolute;
+    translate: -50% -100%;
+    padding: 0 12px 2px 12px;
+    font-size: 26px;
+    color: #0b1020;
+    border-width: 3px;
+    border-color: var(--outline);
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+/* ---------- Center: countdown & banner ---------- */
+
+.hud__center {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.countdown {
+    font-size: 280px;
+    color: var(--yellow);
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: #000000;
+    text-shadow: 0 16px 0 #000000;
+    transition-property: scale, opacity;
+    transition-duration: 0.25s, 0.25s;
+    transition-timing-function: ease-out-back, ease-out-cubic;
+}
+
+.countdown--pop {
+    scale: 1.8 1.8;
+    opacity: 0.2;
+}
+
+.countdown--go {
+    color: var(--green);
+}
+
+.banner {
+    margin-top: 12px;
+    padding: 8px 36px 12px 36px;
+    font-size: 52px;
+    letter-spacing: 3px;
+    background-color: rgba(4, 6, 18, 0.72);
+    border-width: 4px;
+    border-color: var(--outline);
+    border-radius: 18px;
+}
+
+/* ---------- Overlays ---------- */
+
+.pause__panel .btn--block {
+    margin-top: 16px;
+}
+
+.result__panel {
+    width: 920px;
+    align-items: center;
+}
+
+.result__title {
+    font-size: 150px;
+    letter-spacing: 4px;
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: #000000;
+    text-shadow: 0 12px 0 #000000;
+    color: var(--yellow);
+    margin: 0;
+    padding: 0;
+}
+
+.result--win .result__title { color: var(--green); }
+.result--lose .result__title { color: var(--red); }
+.result--draw .result__title { color: var(--text-muted); }
+
+.result__subtitle {
+    font-size: 44px;
+    color: var(--text);
+    margin-bottom: 8px;
+    -unity-text-align: middle-center;
+    white-space: normal;
+}
+
+.result__hint {
+    font-size: 28px;
+    min-height: 36px;
+    margin-bottom: 18px;
+}
+
+.result__buttons {
+    margin-top: 6px;
+}

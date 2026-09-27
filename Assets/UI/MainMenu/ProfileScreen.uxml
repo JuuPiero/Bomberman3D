@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="../Common.uss" />
+    <Style src="MainMenu.uss" />
+    <ui:VisualElement class="app screen">
+        <ui:VisualElement class="panel profile">
+            <ui:Label text="YOUR NAME" class="panel__title" />
+            <ui:Label text="THIS IS HOW OTHER PLAYERS WILL SEE YOU." class="muted profile__intro" />
+            <ui:TextField name="nickname-field" max-length="16" class="field" />
+            <ui:Label name="nickname-error" text="" class="error-text" />
+            <ui:VisualElement class="row row--end profile__footer">
+                <ui:Button name="btn-profile-back" text="BACK" focusable="false" class="btn" />
+                <ui:Button name="btn-profile-save" text="CONTINUE" focusable="false" class="btn btn--primary" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
