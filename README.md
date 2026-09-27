@@ -1,3 +1,3 @@
 
 
-Play Game: [https://juupiero.github.io/Bomberman3D/](https://juupiero.github.io/Bomberman3D/)
+Play Game: [https://bomberman3d.wasmer.app/](https://bomberman3d.wasmer.app/)
